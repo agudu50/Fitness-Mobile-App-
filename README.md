@@ -4,7 +4,7 @@ A clean, modern React Native application built with **Expo** (SDK 54) and **Reac
 
 ---
 
-## 📱 Features & Requirements
+## 📱 Features & Assignment Requirements
 
 - [x] **Expo Project Setup**: Configured with React Native `0.81.5`, Expo SDK 54, and `@react-navigation/native-stack`.
 - [x] **Landing Screen**: Replicated "Pump House" onboarding screen with decorative line graphics, CTA button, and hero media.
@@ -20,11 +20,35 @@ A clean, modern React Native application built with **Expo** (SDK 54) and **Reac
 
 ---
 
-## 📱 Screens & App Flow
+## 🧭 Navigation Architecture & Flow
+
+```
+                  ┌──────────────────────┐
+                  │    LandingScreen     │
+                  │ ("Pump House" Hero)  │
+                  └──────────┬───────────┘
+                             │
+                             ▼
+                  ┌──────────────────────┐
+                  │  WorkoutListScreen   │
+                  │ (6 Workout Programs) │
+                  └──────────┬───────────┘
+                             │
+       ┌─────────────────────┼─────────────────────┐
+       ▼                     ▼                     ▼
+┌──────────────┐     ┌──────────────┐     ┌──────────────────┐
+│  Workout     │     │   Calendar   │     │  Track Activity  │
+│  Details     │     │   Screen     │     │  (StatsScreen)   │
+└──────────────┘     └──────────────┘     └──────────────────┘
+```
+
+---
+
+## 📱 Screens Overview
 
 ### 1. Landing Screen (`LandingScreen.js`)
 - **Initial route** when opening the application.
-- Displays the **Pump House** branding, tagline, concentric line graphics, hero image, and a **Next** button.
+- Displays the **Pump House** branding, tagline, concentric line graphics, hero image, and a **Next** button navigating to `WorkoutListScreen`.
 
 ### 2. Workout Programs Screen (`WorkoutListScreen.js`)
 - Renders **6 unique workout routines**:
@@ -44,6 +68,7 @@ A clean, modern React Native application built with **Expo** (SDK 54) and **Reac
 ### 4. Workout Calendar Screen (`CalendarScreen.js`)
 - Interactive **monthly calendar grid** allowing users to select any day.
 - Displays scheduled routines for the selected day (Indoor Run, Outdoor Cycle, Core Mobility).
+- Selecting any scheduled workout opens `WorkoutDetailsScreen` with workout parameters.
 
 ### 5. Track Activity Screen (`StatsScreen.js`)
 - **Total Kilocalories Hero Banner**: Highlights daily calorie burn (`1,883 Kcal`) with interactive total burn badge.
