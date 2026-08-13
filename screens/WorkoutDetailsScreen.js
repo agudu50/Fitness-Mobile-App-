@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import {
-  SafeAreaView,
   StyleSheet,
   Text,
   View,
@@ -8,6 +7,7 @@ import {
   ScrollView,
   Image,
 } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { StatusBar } from 'expo-status-bar';
 import { Ionicons } from '@expo/vector-icons';
 
@@ -37,6 +37,14 @@ const WorkoutDetailsScreen = ({ route, navigation }) => {
     setIsCompleted((prev) => !prev);
   };
 
+  const handleBack = () => {
+    if (navigation.canGoBack()) {
+      navigation.goBack();
+    } else {
+      navigation.navigate('WorkoutList');
+    }
+  };
+
   const imageSource = typeof workout.image === 'string' ? { uri: workout.image } : workout.image;
 
   return (
@@ -47,7 +55,7 @@ const WorkoutDetailsScreen = ({ route, navigation }) => {
         <View style={styles.headerTop}>
           <TouchableOpacity
             style={styles.backButton}
-            onPress={() => navigation.goBack()}
+            onPress={handleBack}
             hitSlop={8}
           >
             <Ionicons name="chevron-back" size={24} color={BLACK} />

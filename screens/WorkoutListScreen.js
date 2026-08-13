@@ -1,12 +1,14 @@
 import React from 'react';
 import {
-  SafeAreaView,
   StyleSheet,
   Text,
   View,
+  TouchableOpacity,
   ScrollView,
   StatusBar,
 } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import { Ionicons } from '@expo/vector-icons';
 import WorkoutCard from '../components/WorkoutCard';
 
 const PINK = '#ff6b81';
@@ -111,11 +113,29 @@ const WorkoutListScreen = ({ navigation }) => {
     navigation.navigate('WorkoutDetails', { workout });
   };
 
+  const handleBack = () => {
+    if (navigation.canGoBack()) {
+      navigation.goBack();
+    } else {
+      navigation.navigate('Landing');
+    }
+  };
+
   return (
     <SafeAreaView style={styles.safe}>
       <StatusBar barStyle="dark-content" backgroundColor="#ffffff" />
       <View style={styles.header}>
-        <Text style={styles.headerSubtitle}>DAILY ROUTINES</Text>
+        <View style={styles.headerTopRow}>
+          <TouchableOpacity
+            style={styles.backButton}
+            onPress={handleBack}
+            hitSlop={8}
+          >
+            <Ionicons name="chevron-back" size={24} color={BLACK} />
+          </TouchableOpacity>
+          <Text style={styles.headerSubtitle}>DAILY ROUTINES</Text>
+          <View style={styles.headerPlaceholder} />
+        </View>
         <Text style={styles.headerTitle}>Workout Programs</Text>
       </View>
 
@@ -145,18 +165,34 @@ const styles = StyleSheet.create({
   },
   header: {
     paddingHorizontal: 20,
-    paddingTop: 16,
+    paddingTop: 12,
     paddingBottom: 12,
     borderBottomWidth: 1,
     borderBottomColor: '#f0f0f5',
     backgroundColor: '#ffffff',
+  },
+  headerTopRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    marginBottom: 6,
+  },
+  backButton: {
+    width: 36,
+    height: 36,
+    borderRadius: 18,
+    backgroundColor: '#f1f2f6',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  headerPlaceholder: {
+    width: 36,
   },
   headerSubtitle: {
     color: PINK,
     fontSize: 12,
     fontWeight: '700',
     letterSpacing: 1,
-    marginBottom: 4,
   },
   headerTitle: {
     color: BLACK,
