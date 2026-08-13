@@ -19,7 +19,7 @@ const WORKOUT_DATA = [
     title: 'Full-Body HIIT',
     duration: '25 min',
     calories: 320,
-    image: require('../assets/lady-1.png'),
+    image: 'https://images.unsplash.com/photo-1517838277536-f5f99be501cd?q=80&w=800&auto=format&fit=crop',
     difficulty: 'Medium',
     description: 'High-intensity interval training to burn calories and boost overall body endurance.',
     exercises: [
@@ -34,7 +34,7 @@ const WORKOUT_DATA = [
     title: 'Bicep & Arm Sculpt',
     duration: '15 min',
     calories: 180,
-    image: require('../assets/profile-1.jpg'),
+    image: 'https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?q=80&w=800&auto=format&fit=crop',
     difficulty: 'Easy',
     description: 'Targeted upper body workout designed to tone biceps, triceps, and shoulders.',
     exercises: [
@@ -49,7 +49,7 @@ const WORKOUT_DATA = [
     title: 'Core & Ab Crusher',
     duration: '20 min',
     calories: 210,
-    image: require('../assets/profile-2.jpg'),
+    image: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?q=80&w=800&auto=format&fit=crop',
     difficulty: 'Hard',
     description: 'Strengthen your midsection and build abdominal strength with focused floor moves.',
     exercises: [
@@ -64,7 +64,7 @@ const WORKOUT_DATA = [
     title: 'Lower Body & Leg Power',
     duration: '30 min',
     calories: 400,
-    image: require('../assets/profile-3.jpg'),
+    image: 'https://images.unsplash.com/photo-1434682881908-b43d0467b798?q=80&w=800&auto=format&fit=crop',
     difficulty: 'Hard',
     description: 'Build lower body strength and sculpt quad, hamstring, and glute muscle groups.',
     exercises: [
@@ -79,7 +79,7 @@ const WORKOUT_DATA = [
     title: 'Morning Yoga & Flexibility',
     duration: '18 min',
     calories: 120,
-    image: require('../assets/lady-1.png'),
+    image: 'https://images.unsplash.com/photo-1545205597-3d9d02c29597?q=80&w=800&auto=format&fit=crop',
     difficulty: 'Easy',
     description: 'Gentle stretching and mobility exercises to awaken your muscles and reduce tension.',
     exercises: [
@@ -94,7 +94,7 @@ const WORKOUT_DATA = [
     title: 'Cardio Blast & Burn',
     duration: '35 min',
     calories: 450,
-    image: require('../assets/profile-1.jpg'),
+    image: 'https://images.unsplash.com/photo-1538805060514-97d9cc17730c?q=80&w=800&auto=format&fit=crop',
     difficulty: 'Medium',
     description: 'High-energy cardiovascular routine to maximize calorie burn and improve heart health.',
     exercises: [
