@@ -137,6 +137,13 @@ const WorkoutListScreen = ({ navigation }) => {
           <View style={styles.headerRightActions}>
             <TouchableOpacity
               style={styles.headerActionButton}
+              onPress={() => navigation.navigate('Friends')}
+              hitSlop={8}
+            >
+              <Ionicons name="people-outline" size={18} color={PINK} />
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={styles.headerActionButton}
               onPress={() => navigation.navigate('Stats')}
               hitSlop={8}
             >

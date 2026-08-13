@@ -7,6 +7,7 @@ import WorkoutListScreen from './screens/WorkoutListScreen';
 import WorkoutDetailsScreen from './screens/WorkoutDetailsScreen';
 import CalendarScreen from './screens/CalendarScreen';
 import StatsScreen from './screens/StatsScreen';
+import FriendsScreen from './screens/FriendsScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -40,6 +41,10 @@ export default function App() {
           <Stack.Screen
             name="Stats"
             component={StatsScreen}
+          />
+          <Stack.Screen
+            name="Friends"
+            component={FriendsScreen}
           />
         </Stack.Navigator>
       </NavigationContainer>
