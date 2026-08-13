@@ -7,17 +7,16 @@ import {
   TouchableOpacity,
   Pressable,
 } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
 
 const PINK = '#ff6b81';
 const BLACK = '#1a1a1a';
 const GRAY = '#8e8e93';
-const LIGHT_BG = '#f8f9fa';
 
 const WorkoutCard = ({ image, title, duration, calories, onPress }) => {
   const [isFavourite, setIsFavourite] = useState(false);
 
   const toggleFavourite = (e) => {
-    // Prevent parent card onPress when tapping favourite icon
     if (e && e.stopPropagation) {
       e.stopPropagation();
     }
@@ -43,9 +42,11 @@ const WorkoutCard = ({ image, title, duration, calories, onPress }) => {
           onPress={toggleFavourite}
           hitSlop={8}
         >
-          <Text style={[styles.favouriteIcon, isFavourite && styles.favouriteIconActive]}>
-            {isFavourite ? '♥' : '♡'}
-          </Text>
+          <Ionicons
+            name={isFavourite ? 'heart' : 'heart-outline'}
+            size={20}
+            color={isFavourite ? PINK : '#8e8e93'}
+          />
         </Pressable>
       </View>
 
@@ -55,11 +56,11 @@ const WorkoutCard = ({ image, title, duration, calories, onPress }) => {
         </Text>
         <View style={styles.metaRow}>
           <View style={styles.metaBadge}>
-            <Text style={styles.metaIcon}>⏱</Text>
+            <Ionicons name="time-outline" size={14} color={GRAY} />
             <Text style={styles.metaText}>{duration}</Text>
           </View>
           <View style={styles.metaBadge}>
-            <Text style={styles.metaIcon}>🔥</Text>
+            <Ionicons name="flame-outline" size={14} color={PINK} />
             <Text style={styles.metaText}>{calories} kcal</Text>
           </View>
         </View>
@@ -99,7 +100,7 @@ const styles = StyleSheet.create({
     width: 36,
     height: 36,
     borderRadius: 18,
-    backgroundColor: 'rgba(255, 255, 255, 0.9)',
+    backgroundColor: 'rgba(255, 255, 255, 0.92)',
     justifyContent: 'center',
     alignItems: 'center',
     elevation: 3,
@@ -107,13 +108,6 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 1 },
     shadowOpacity: 0.15,
     shadowRadius: 3,
-  },
-  favouriteIcon: {
-    fontSize: 20,
-    color: '#8e8e93',
-  },
-  favouriteIconActive: {
-    color: PINK,
   },
   cardContent: {
     padding: 16,
@@ -133,9 +127,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     gap: 4,
-  },
-  metaIcon: {
-    fontSize: 12,
   },
   metaText: {
     color: GRAY,

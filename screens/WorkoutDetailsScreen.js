@@ -7,11 +7,9 @@ import {
   TouchableOpacity,
   ScrollView,
   Image,
-  Dimensions,
 } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
-
-const { width } = Dimensions.get('window');
+import { Ionicons } from '@expo/vector-icons';
 
 const PINK = '#ff6b81';
 const BLACK = '#1a1a1a';
@@ -25,7 +23,7 @@ const WorkoutDetailsScreen = ({ route, navigation }) => {
     calories: 320,
     difficulty: 'Medium',
     description: 'Shift stubborn body fat and build endurance.',
-    image: require('../assets/lady-1.png'),
+    image: 'https://images.unsplash.com/photo-1517838277536-f5f99be501cd?q=80&w=800&auto=format&fit=crop',
     exercises: [
       { id: '1', name: 'Jumping Jacks', duration: '45 sec' },
       { id: '2', name: 'Burpees', duration: '45 sec' },
@@ -52,7 +50,7 @@ const WorkoutDetailsScreen = ({ route, navigation }) => {
             onPress={() => navigation.goBack()}
             hitSlop={8}
           >
-            <Text style={styles.backButtonText}>‹</Text>
+            <Ionicons name="chevron-back" size={24} color={BLACK} />
           </TouchableOpacity>
           <Text style={styles.headerTitle}>Workout Details</Text>
           <View style={styles.headerPlaceholder} />
@@ -78,10 +76,12 @@ const WorkoutDetailsScreen = ({ route, navigation }) => {
                 <Text style={styles.difficultyText}>{workout.difficulty}</Text>
               </View>
               <View style={styles.metaBadge}>
-                <Text style={styles.metaText}>⏱ {workout.duration}</Text>
+                <Ionicons name="time-outline" size={14} color={GRAY} />
+                <Text style={styles.metaText}>{workout.duration}</Text>
               </View>
               <View style={styles.metaBadge}>
-                <Text style={styles.metaText}>🔥 {workout.calories} kcal</Text>
+                <Ionicons name="flame-outline" size={14} color={PINK} />
+                <Text style={styles.metaText}>{workout.calories} kcal</Text>
               </View>
             </View>
 
@@ -102,7 +102,7 @@ const WorkoutDetailsScreen = ({ route, navigation }) => {
                     <Text style={styles.exerciseName}>{exercise.name}</Text>
                     <Text style={styles.exerciseDuration}>{exercise.duration}</Text>
                   </View>
-                  <Text style={styles.checkMark}>✓</Text>
+                  <Ionicons name="checkmark-circle-outline" size={20} color={GRAY} />
                 </View>
               ))}
             </View>
@@ -119,9 +119,14 @@ const WorkoutDetailsScreen = ({ route, navigation }) => {
             activeOpacity={0.88}
             onPress={toggleWorkoutStatus}
           >
-            <Text style={styles.actionButtonText}>
-              {isCompleted ? '✓ Completed' : 'Start Workout'}
-            </Text>
+            <View style={styles.buttonContent}>
+              {isCompleted && (
+                <Ionicons name="checkmark-circle" size={20} color="#ffffff" style={styles.buttonIcon} />
+              )}
+              <Text style={styles.actionButtonText}>
+                {isCompleted ? 'Completed' : 'Start Workout'}
+              </Text>
+            </View>
           </TouchableOpacity>
         </View>
       </View>
@@ -154,12 +159,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#f1f2f6',
     justifyContent: 'center',
     alignItems: 'center',
-  },
-  backButtonText: {
-    color: BLACK,
-    fontSize: 28,
-    lineHeight: 30,
-    fontWeight: '600',
   },
   headerTitle: {
     color: BLACK,
@@ -212,6 +211,9 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     paddingVertical: 4,
     borderRadius: 8,
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 4,
   },
   metaText: {
     color: GRAY,
@@ -275,11 +277,6 @@ const styles = StyleSheet.create({
     fontSize: 12,
     fontWeight: '500',
   },
-  checkMark: {
-    color: GRAY,
-    fontSize: 16,
-    fontWeight: '700',
-  },
   footerContainer: {
     position: 'absolute',
     bottom: 0,
@@ -307,6 +304,14 @@ const styles = StyleSheet.create({
   completedButton: {
     backgroundColor: GREEN,
     shadowColor: GREEN,
+  },
+  buttonContent: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  buttonIcon: {
+    marginRight: 6,
   },
   actionButtonText: {
     color: '#ffffff',
