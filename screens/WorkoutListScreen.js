@@ -134,13 +134,22 @@ const WorkoutListScreen = ({ navigation }) => {
             <Ionicons name="chevron-back" size={24} color={BLACK} />
           </TouchableOpacity>
           <Text style={styles.headerSubtitle}>DAILY ROUTINES</Text>
-          <TouchableOpacity
-            style={styles.calendarButton}
-            onPress={() => navigation.navigate('Calendar')}
-            hitSlop={8}
-          >
-            <Ionicons name="calendar-outline" size={20} color={PINK} />
-          </TouchableOpacity>
+          <View style={styles.headerRightActions}>
+            <TouchableOpacity
+              style={styles.headerActionButton}
+              onPress={() => navigation.navigate('Stats')}
+              hitSlop={8}
+            >
+              <Ionicons name="stats-chart-outline" size={18} color={PINK} />
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={styles.headerActionButton}
+              onPress={() => navigation.navigate('Calendar')}
+              hitSlop={8}
+            >
+              <Ionicons name="calendar-outline" size={18} color={PINK} />
+            </TouchableOpacity>
+          </View>
         </View>
         <Text style={styles.headerTitle}>Workout Programs</Text>
       </View>
@@ -191,7 +200,12 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  calendarButton: {
+  headerRightActions: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 8,
+  },
+  headerActionButton: {
     width: 36,
     height: 36,
     borderRadius: 18,

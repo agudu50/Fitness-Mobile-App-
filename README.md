@@ -1,6 +1,6 @@
 # 🏋️ Pump House - Fitness Mobile App
 
-A clean, modern React Native application built with **Expo** (SDK 54) and **React Navigation**. This project features reusable UI components, interactive state management, stack navigation with route parameters, an interactive workout calendar, and a sleek flat design system.
+A clean, modern React Native application built with **Expo** (SDK 54) and **React Navigation**. This project features reusable UI components, interactive state management, stack navigation with route parameters, an interactive workout calendar, activity tracking statistics, and a sleek flat design system.
 
 ---
 
@@ -14,6 +14,7 @@ A clean, modern React Native application built with **Expo** (SDK 54) and **Reac
 - [x] **Stack Navigator & Route Params**: Tapping a card opens `WorkoutDetailsScreen`, passing selected workout data through `route.params`.
 - [x] **Interactive Action Button**: Details screen features a button toggling between **"Start Workout"** and **"Completed"** state.
 - [x] **Workout Calendar Screen**: Interactive date selector grid (month view) with scheduled daily workout routines.
+- [x] **Track Activity Statistics Screen**: Total Kilocalories burned card (`1,883 Kcal`), interactive date selector, weekly burn bar chart, distance/steps/points metrics, and workout category breakdown.
 - [x] **Clean Flat Design**: Flat color scheme (`#ff6b81` pink accent, `#ffffff` card backgrounds, `#2ed573` completed state) and vector icons from `@expo/vector-icons` (`Ionicons`).
 
 ---
@@ -33,7 +34,7 @@ A clean, modern React Native application built with **Expo** (SDK 54) and **Reac
   5. Morning Yoga & Flexibility (18 min | 120 kcal)
   6. Cardio Blast & Burn (35 min | 450 kcal)
 - Uses the reusable `WorkoutCard` component with independent favourite state.
-- Features a **Calendar** icon button in the header for quick navigation to `CalendarScreen`.
+- Features **Track Activity** (`stats-chart-outline`) and **Calendar** (`calendar-outline`) header buttons.
 
 ### 3. Workout Details Screen (`WorkoutDetailsScreen.js`)
 - Receives detailed workout object via `route.params`.
@@ -42,7 +43,12 @@ A clean, modern React Native application built with **Expo** (SDK 54) and **Reac
 ### 4. Workout Calendar Screen (`CalendarScreen.js`)
 - Interactive **monthly calendar grid** allowing users to select any day.
 - Displays scheduled routines for the selected day (Indoor Run, Outdoor Cycle, Core Mobility).
-- Integrated with Stack Navigation to open `WorkoutDetailsScreen` upon selecting any scheduled workout.
+
+### 5. Track Activity Screen (`StatsScreen.js`)
+- **Total Kilocalories Hero Banner**: Highlights daily calorie burn (`1,883 Kcal`) with interactive total burn badge.
+- **Weekly Bar Chart**: Compares daily calorie expenditure across the week.
+- **Activity Metrics Grid**: Distance (`7,580 m`), Steps (`9,832`), Points (`1,248`).
+- **Workout Breakdown**: Category breakdown (Dumbbell 628 Kcal, Treadmill 235 Kcal, Rope Jump 432 Kcal).
 
 ---
 
@@ -57,7 +63,8 @@ dcit-324-assign2/
 │   ├── LandingScreen.js           # "Pump House" Landing / Onboarding Screen
 │   ├── WorkoutListScreen.js       # List screen displaying 6 workout program cards
 │   ├── WorkoutDetailsScreen.js    # Details screen with exercise list & Start/Completed toggle
-│   └── CalendarScreen.js          # Interactive workout calendar & date schedule screen
+│   ├── CalendarScreen.js          # Interactive workout calendar & date schedule screen
+│   └── StatsScreen.js             # Track Activity statistics & Total Kilocalories screen
 ├── assets/                        # Local image assets
 ├── app.json                       # Expo configuration
 ├── package.json                   # Project dependencies
