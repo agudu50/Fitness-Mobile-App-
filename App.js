@@ -5,6 +5,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import LandingScreen from './screens/LandingScreen';
 import WorkoutListScreen from './screens/WorkoutListScreen';
 import WorkoutDetailsScreen from './screens/WorkoutDetailsScreen';
+import CalendarScreen from './screens/CalendarScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -30,6 +31,10 @@ export default function App() {
           <Stack.Screen
             name="WorkoutDetails"
             component={WorkoutDetailsScreen}
+          />
+          <Stack.Screen
+            name="Calendar"
+            component={CalendarScreen}
           />
         </Stack.Navigator>
       </NavigationContainer>
